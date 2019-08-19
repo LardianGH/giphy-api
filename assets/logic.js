@@ -1,5 +1,5 @@
 
-var topics = ["cats", "dogs", "fish", "snail"];
+var topics = ["cat", "dog", "fish", "snail"];
 
 var addGif = function() {
 
@@ -9,7 +9,7 @@ var addGif = function() {
 
     var gifNumber = 3
 
-    var queryURL = "api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + key + "&limit=" + gifNumber
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + key + "&limit=" + gifNumber
 
     console.log(queryURL)
     $.ajax({
@@ -17,6 +17,17 @@ var addGif = function() {
         method: "GET"
       }).then(function(response) {
 
+
+        var gifBox = $("<div>");
+
+        var gif = $("<img>")
+        
+        gif.attr("src", response.data[0].images.original.webp);
+
+        gif.attr("alt", (searchTerm + " gif"));
+
+         $("#output").prepend(gif);
+         
         console.log(response)
         
 
