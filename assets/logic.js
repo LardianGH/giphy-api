@@ -24,9 +24,13 @@ var addGif = function() {
 
         var gif = $("<img>").addClass("gif");
 
-        gif.attr("data-animate", response.data.images.fixed_height.webp);
+        gif.attr("data-play", response.data.images.fixed_height.webp);
+
+        gif.attr("data-stop", response.data.images.fixed_height_still.url);
+
+        gif.attr("data-state", "play")
         
-        gif.attr("src", (gif).attr("data-animate"));
+        gif.attr("src", (gif).attr("data-play")); //initial spawning state
 
         gif.attr("alt", (searchTerm + " gif"));
 
@@ -84,9 +88,25 @@ $("#add-topic").on("click", function(event) {
 
 var pausePlay = function() {
 
-  var state = ($(this).attr("data-animate"))
+  var state = ($(this).attr("data-state"))
 
   console.log(state)
+
+  if (state === "still") {
+
+    $(this).attr("data-state", "play")
+
+    $(this).attr("src", $(this).attr("data-play"))
+
+  }
+
+  else {
+
+    $(this).attr("data-state", "still")
+
+    $(this).attr("src", $(this).attr("data-stop"))
+
+}
 
 }
 
