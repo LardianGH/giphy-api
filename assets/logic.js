@@ -7,9 +7,11 @@ var addGif = function() {
 
     var key = "pZgX54Wez0czcsiYa1Nuj0pr6CaMSzwl"
 
-    var gifNumber = 3
+    var gifNumber = 15
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + key + "&limit=" + gifNumber
+    for (i=0; i<gifNumber; i++) {
+
+    var queryURL = "https://api.giphy.com/v1/gifs/random?&api_key=" + key + "&tag=" + searchTerm
 
     console.log(queryURL)
     $.ajax({
@@ -18,20 +20,25 @@ var addGif = function() {
       }).then(function(response) {
 
 
-        var gifBox = $("<div>");
+        var gifBox = $("<div>").addClass("box");
 
-        var gif = $("<img>")
+        var gif = $("<img>").addClass("gif");
+
+        gif.attr("data-animate", response.data.images.fixed_height.webp);
         
-        gif.attr("src", response.data[0].images.original.webp);
+        gif.attr("src", (gif).attr("data-animate"));
 
         gif.attr("alt", (searchTerm + " gif"));
 
-         $("#output").prepend(gif);
+        $(gifBox).append($(gif));
+
+         $("#output").prepend(gifBox);
          
         console.log(response)
         
-
+      
       });
+    }
 }
 
 var addButtons = function() {
@@ -58,6 +65,11 @@ $("#add-topic").on("click", function(event) {
 
     event.preventDefault();
 
+    if ($("#input").val() === "") {
+        return null;
+    }
+    else {
+
     var newTopic = $("#input").val().trim(); //gets the string entered into the textbox and removes whitespace
 
     topics.push(newTopic);
@@ -66,8 +78,22 @@ $("#add-topic").on("click", function(event) {
 
     addButtons();
 
+    }
+
 })
+
+var pausePlay = function() {
+
+  var state = ($(this).attr("data-animate"))
+
+  console.log(state)
+
+}
+
+
     
 $(document).on("click", ".button", addGif);
+
+$(document).on("click", ".gif", pausePlay);
 
 addButtons(); //inital run to add the starting buttons

@@ -1,0 +1,24 @@
+
+.button {
+    width: 60px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: royalblue;
+    border-color: silver;
+    color: white;
+    margin:8px;
+}
+
+.box {
+    border-style: solid;
+    border-color: darkgray;
+    background-color: gray;
+    max-width: 400px;
+    padding: 5px;
+    float: left;
+    overflow: hidden;
+}
+
+#output {
+    margin-left: 80px;
+}
