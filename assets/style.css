@@ -1,6 +1,9 @@
+body {
+    background-color: lightblue;
+}
 
 .button {
-    width: 60px;
+    min-width: 60px;
     height: 35px;
     border-radius: 5px;
     background-color: royalblue;
@@ -10,15 +13,26 @@
 }
 
 .box {
+    text-align: center;
     border-style: solid;
-    border-color: darkgray;
+    border-color: green;
     background-color: gray;
     max-width: 400px;
+    height: 220px;
     padding: 5px;
     float: left;
     overflow: hidden;
 }
 
+.gif {
+    display: inline-block;
+}
+
 #output {
     margin-left: 80px;
+  
+}
+
+#gifNum {
+    width: 30px;
 }

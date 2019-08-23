@@ -3,17 +3,18 @@ var topics = ["cat", "dog", "fish", "snail"];
 
 var addGif = function() {
 
-    var searchTerm = $(this).attr("data-name");
+    var searchTerm = $(this).attr("data-name").replace(/\s/g,''); //gets the input without spaces
 
     var key = "pZgX54Wez0czcsiYa1Nuj0pr6CaMSzwl"
 
-    var gifNumber = 15
+    var gifNumber = $("#gifNum").val()
 
     for (i=0; i<gifNumber; i++) {
 
     var queryURL = "https://api.giphy.com/v1/gifs/random?&api_key=" + key + "&tag=" + searchTerm
 
     console.log(queryURL)
+    console.log(searchTerm)
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -35,6 +36,8 @@ var addGif = function() {
         gif.attr("alt", (searchTerm + " gif"));
 
         $(gifBox).append($(gif));
+
+        $(gifBox).append("<br>" + response.data.title);
 
          $("#output").prepend(gifBox);
          
@@ -98,6 +101,10 @@ var pausePlay = function() {
 
     $(this).attr("src", $(this).attr("data-play"))
 
+    $(this.parentElement).css("border-color", "green");
+
+    $(this).css("opacity", 1)
+
   }
 
   else {
@@ -105,6 +112,10 @@ var pausePlay = function() {
     $(this).attr("data-state", "still")
 
     $(this).attr("src", $(this).attr("data-stop"))
+
+    $(this.parentElement).css("border-color", "darkgray");
+
+    $(this).css("opacity", 0.4)
 
 }
 
