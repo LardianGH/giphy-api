@@ -1,8 +1,10 @@
 body {
     background-color: lightblue;
+    text-align: center;
 }
 
 .button {
+    display: inline-block;
     min-width: 60px;
     height: 35px;
     border-radius: 5px;
@@ -12,10 +14,25 @@ body {
     margin:8px;
 }
 
+#add-topic {
+    height: 35px;
+    border-radius: 5px;
+    background-color: orangered;
+    border-color: orange;
+    color: white;
+    margin:8px;
+}
+
+#buttonBox {
+    width: 650px;
+    display: inline-block;
+   
+}
+
 .box {
     text-align: center;
     border-style: solid;
-    border-color: green;
+    border-color:  darkgray;
     background-color: gray;
     max-width: 400px;
     height: 220px;
@@ -26,6 +43,7 @@ body {
 
 .gif {
     display: inline-block;
+    opacity: 0.4;
 }
 
 #output {
@@ -35,4 +53,22 @@ body {
 
 #gifNum {
     width: 30px;
+}
+
+@media only screen and (max-width : 800px) {
+    body {
+        
+        background-color: red;
+
+    }
+
+    #buttonBox {
+        width: 350px;
+        
+    }
+
+    .button {
+        min-width: 80px;
+        height: 45px;
+    }
 }

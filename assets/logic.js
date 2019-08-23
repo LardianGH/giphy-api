@@ -29,9 +29,9 @@ var addGif = function() {
 
         gif.attr("data-stop", response.data.images.fixed_height_still.url);
 
-        gif.attr("data-state", "play")
+        gif.attr("data-state", "still")
         
-        gif.attr("src", (gif).attr("data-play")); //initial spawning state
+        gif.attr("src", (gif).attr("data-stop")); //initial spawning state
 
         gif.attr("alt", (searchTerm + " gif"));
 
