@@ -127,16 +127,16 @@ body {
 
     #output {
         display: inline-block;
-        width: 400px;
+        width: 330px;
         margin: 0;
     }
 
     .saveBox {
-        width: 360px;
+        width: 330px;
     }
 
     .box {
-        width: 360px;
+        width: 330px;
     }
     
 }
