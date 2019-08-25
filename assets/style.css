@@ -102,6 +102,19 @@ body {
 
     }
 
+    #input {
+        height: 25px;
+    }
+
+    .title {
+        width: 330px;
+    }
+
+    #gifNum {
+        width: 40px;
+        height: 25px;
+    }
+
     #buttonBox {
         width: 350px;
         
@@ -115,7 +128,7 @@ body {
     #output {
         position: relative;
         width: 400px;
-        right: 50px;
+        margin: 0;
     }
 
     .box {
