@@ -1,6 +1,12 @@
 
 var topics = ["cat", "dog", "fish", "snail"];
 
+var delBut = $("<button>")
+
+delBut.addClass("delBut");
+
+delBut.text("delete");
+
 var addGif = function() {
 
     var searchTerm = $(this).attr("data-name").replace(/\s/g,''); //gets the input without spaces
@@ -31,6 +37,12 @@ var addGif = function() {
 
         saveBut.text("save gif");
 
+        var delBut = $("<button>")
+
+        delBut.addClass("delBut");
+
+        delBut.text("delete");
+
         gif.attr("data-play", response.data.images.fixed_height.webp);
 
         gif.attr("data-stop", response.data.images.fixed_height_still.url);
@@ -51,9 +63,13 @@ var addGif = function() {
 
         $(gifBox).append("<br>")
 
-        $(gifBox).append(name + " ");
-
         $(gifBox).append(saveBut)
+
+        $(gifBox).append(delBut);
+
+        $(gifBox).append("<br>")
+
+        $(gifBox).append(name + " ");
 
          $("#output").prepend(gifBox);
          
@@ -163,12 +179,6 @@ var gifBox = $("<div>").addClass("saveBox");
 
 var gif = $("<img>").addClass("gif");
 
-var delBut = $("<button>")
-
-delBut.addClass("delBut");
-
-delBut.text("delete");
-
 gif.attr("data-play", playing);
 
 gif.attr("data-stop", stopping);
@@ -214,12 +224,6 @@ state = localStorage.getItem("state");
 var gifBox = $("<div>").addClass("saveBox");
 
 var gif = $("<img>").addClass("gif");
-
-var delBut = $("<button>")
-
-delBut.addClass("delBut");
-
-delBut.text("delete");
 
 gif.attr("data-play", playing);
 

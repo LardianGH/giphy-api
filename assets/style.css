@@ -21,14 +21,10 @@ body {
 .delBut {
     display: inline-block;
     min-width: 60px;
-    height: 30px;
-    border-radius: 5px;
     background-color: magenta;
-    border-color: silver;
     color: white;
-    margin:2px;
-    margin-right: 10px;
 }
+ 
 
 #add-topic {
     height: 35px;
@@ -55,6 +51,7 @@ body {
     padding: 5px;
     float: left;
     overflow: hidden;
+    padding-bottom: 25px;
 }
 
 .saveBox {
@@ -86,7 +83,7 @@ body {
 }
 
 .saveBut {
-    float: right;
+    display: inline-block;
     background-color: aquamarine;
 }
 
@@ -136,6 +133,8 @@ body {
 
     .box {
         width: 300px;
+        margin-bottom: 5px;
+        
     }
     
 }
