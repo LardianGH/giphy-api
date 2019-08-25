@@ -18,6 +18,19 @@ body {
     margin:8px;
 }
 
+.delBut {
+    display: inline-block;
+    min-width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: magenta;
+    border-color: silver;
+    color: white;
+    margin:2px;
+    float: right;
+    margin-right: 10px;
+}
+
 #add-topic {
     height: 35px;
     border-radius: 5px;
@@ -38,8 +51,20 @@ body {
     border-style: solid;
     border-color:  darkgray;
     background-color: gray;
-    max-width: 400px;
+    width: 387px;
     height: 220px;
+    padding: 5px;
+    float: left;
+    overflow: hidden;
+}
+
+.saveBox {
+    text-align: center;
+    border-style: solid;
+    color: orangered;
+    border-color:  darkgray;
+    background-color: lightgray;
+    width: 387px;
     padding: 5px;
     float: left;
     overflow: hidden;
@@ -52,17 +77,13 @@ body {
 
 #output {
     margin-left: 85px;
-    border-style: solid;
-    width: 800px;
-    float: left;
+    margin-right: 85px;
+    width: auto;
   
 }
 
 #saved {
-    margin-right: 85px;
-    border-style: solid;
-    width: 400px;
-    float: right;
+    display: inline-block;
 }
 
 .saveBut {
@@ -92,6 +113,13 @@ body {
     }
 
     #output {
+        position: relative;
         width: 400px;
+        right: 50px;
     }
+
+    .box {
+        width: 387px;
+    }
+    
 }

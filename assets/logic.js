@@ -36,6 +36,12 @@ var addGif = function() {
         gif.attr("data-stop", response.data.images.fixed_height_still.url);
 
         gif.attr("data-state", "still")
+
+        gif.attr("data-name", response.data.title);
+
+        var name =  gif.attr("data-name")
+
+        console.log(response.data.title)
         
         gif.attr("src", (gif).attr("data-stop")); //initial spawning state
 
@@ -44,6 +50,8 @@ var addGif = function() {
         $(gifBox).append($(gif));
 
         $(gifBox).append("<br>")
+
+        $(gifBox).append(name + " ");
 
         $(gifBox).append(saveBut)
 
@@ -132,20 +140,26 @@ var pausePlay = function() {
 var saving = function() {
 var grabGif = $(this).siblings()[0]
   // console.log($(this.next()).attr("data-state")) //Trying to grab the gif, not working.
-console.log(grabGif.src)
-console.log(grabGif.dataset.play)
-console.log(grabGif.dataset.stop)
-console.log(grabGif.dataset.state)
+  console.log(grabGif)
+console.log(grabGif.title)
 
-var source = grabGif.src
-var alt = grabGif.alt
-var playing = grabGif.dataset.play
-var stopping = grabGif.dataset.stop
-state = grabGif.dataset.state
+localStorage.setItem("source", (grabGif.src));
+localStorage.setItem("alt", (grabGif.alt));
+localStorage.setItem("playing", (grabGif.dataset.play));
+localStorage.setItem("stopping", (grabGif.dataset.stop));
+localStorage.setItem("gifName", grabGif.dataset.name);
+localStorage.setItem("state", (grabGif.dataset.state));
+
+var source = localStorage.getItem("stopping");
+var alt = localStorage.getItem("alt");
+var playing = localStorage.getItem("playing");
+var stopping = localStorage.getItem("stopping");
+var name = localStorage.getItem("gifName");
+state = localStorage.getItem("state");
 
 //adding the saveBoxes
 
-var gifBox = $("<div>").addClass("box");
+var gifBox = $("<div>").addClass("saveBox");
 
 var gif = $("<img>").addClass("gif");
 
@@ -165,13 +179,19 @@ gif.attr("src", source); //initial spawning state
 
 gif.attr("alt", alt);
 
+$(gifBox).append("Favorie Gif:");
+
+$(gifBox).append("<br>");
+
 $(gifBox).append($(gif));
 
-$(gifBox).append("<br>")
+$(gifBox).append("<br>");
 
-$(gifBox).append(delBut)
+$(gifBox).append(name + " ");
 
- $("#saved").prepend(gifBox);
+$(gifBox).append(delBut);
+
+ $("#saved").html(gifBox);
 
 //end adding the saveBoxes
 }
@@ -179,6 +199,52 @@ $(gifBox).append(delBut)
 var yeet = function() {
 
   $(this.parentElement).css("display", "none")
+  localStorage.clear();
+}
+
+var loadSavedGif = function() {
+  
+var source = localStorage.getItem("stopping");
+var alt = localStorage.getItem("alt");
+var playing = localStorage.getItem("playing");
+var stopping = localStorage.getItem("stopping");
+var name = localStorage.getItem("gifName");
+state = localStorage.getItem("state");
+
+var gifBox = $("<div>").addClass("saveBox");
+
+var gif = $("<img>").addClass("gif");
+
+var delBut = $("<button>")
+
+delBut.addClass("delBut");
+
+delBut.text("delete");
+
+gif.attr("data-play", playing);
+
+gif.attr("data-stop", stopping);
+
+gif.attr("data-state", state)
+
+gif.attr("src", source); //initial spawning state
+
+gif.attr("alt", alt);
+
+$(gifBox).append("Favorie Gif:");
+
+$(gifBox).append("<br>")
+
+$(gifBox).append($(gif));
+
+$(gifBox).append("<br>")
+
+$(gifBox).append(name + ' ');
+
+$(gifBox).append(delBut)
+
+ $("#saved").html(gifBox);
+
 
 }
 
@@ -193,3 +259,7 @@ $(document).on("click", ".saveBut", saving);
 $(document).on("click", ".delBut", yeet);
 
 addButtons(); //inital run to add the starting buttons
+
+if (localStorage.getItem("source") !== null) {
+loadSavedGif();
+}
