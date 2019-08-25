@@ -95,7 +95,7 @@ body {
     width: 30px;
 }
 
-@media only screen and (max-width : 800px) {
+@media only screen and (max-width : 1000px) {
     body {
         
         background-color: red;
@@ -107,7 +107,7 @@ body {
     }
 
     .title {
-        width: 330px;
+        width: 200px;
     }
 
     #gifNum {
@@ -126,8 +126,7 @@ body {
     }
 
     #output {
-        position: relative;
-        width: 400px;
+        width: 387px;
         margin: 0;
     }
 
