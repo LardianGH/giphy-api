@@ -3,6 +3,10 @@ body {
     text-align: center;
 }
 
+.title {
+    height: 150px;
+}
+
 .button {
     display: inline-block;
     min-width: 60px;
@@ -47,8 +51,23 @@ body {
 }
 
 #output {
-    margin-left: 80px;
+    margin-left: 85px;
+    border-style: solid;
+    width: 800px;
+    float: left;
   
+}
+
+#saved {
+    margin-right: 85px;
+    border-style: solid;
+    width: 400px;
+    float: right;
+}
+
+.saveBut {
+    float: right;
+    background-color: aquamarine;
 }
 
 #gifNum {
@@ -70,5 +89,9 @@ body {
     .button {
         min-width: 80px;
         height: 45px;
+    }
+
+    #output {
+        width: 400px;
     }
 }

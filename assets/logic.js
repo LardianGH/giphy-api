@@ -25,6 +25,12 @@ var addGif = function() {
 
         var gif = $("<img>").addClass("gif");
 
+        var saveBut = $("<button>")
+
+        saveBut.addClass("saveBut");
+
+        saveBut.text("save gif");
+
         gif.attr("data-play", response.data.images.fixed_height.webp);
 
         gif.attr("data-stop", response.data.images.fixed_height_still.url);
@@ -37,7 +43,9 @@ var addGif = function() {
 
         $(gifBox).append($(gif));
 
-        $(gifBox).append("<br>" + response.data.title);
+        $(gifBox).append("<br>")
+
+        $(gifBox).append(saveBut)
 
          $("#output").prepend(gifBox);
          
@@ -121,10 +129,67 @@ var pausePlay = function() {
 
 }
 
+var saving = function() {
+var grabGif = $(this).siblings()[0]
+  // console.log($(this.next()).attr("data-state")) //Trying to grab the gif, not working.
+console.log(grabGif.src)
+console.log(grabGif.dataset.play)
+console.log(grabGif.dataset.stop)
+console.log(grabGif.dataset.state)
+
+var source = grabGif.src
+var alt = grabGif.alt
+var playing = grabGif.dataset.play
+var stopping = grabGif.dataset.stop
+state = grabGif.dataset.state
+
+//adding the saveBoxes
+
+var gifBox = $("<div>").addClass("box");
+
+var gif = $("<img>").addClass("gif");
+
+var delBut = $("<button>")
+
+delBut.addClass("delBut");
+
+delBut.text("delete");
+
+gif.attr("data-play", playing);
+
+gif.attr("data-stop", stopping);
+
+gif.attr("data-state", state)
+
+gif.attr("src", source); //initial spawning state
+
+gif.attr("alt", alt);
+
+$(gifBox).append($(gif));
+
+$(gifBox).append("<br>")
+
+$(gifBox).append(delBut)
+
+ $("#saved").prepend(gifBox);
+
+//end adding the saveBoxes
+}
+
+var yeet = function() {
+
+  $(this.parentElement).css("display", "none")
+
+}
+
 
     
 $(document).on("click", ".button", addGif);
 
 $(document).on("click", ".gif", pausePlay);
+
+$(document).on("click", ".saveBut", saving);
+
+$(document).on("click", ".delBut", yeet);
 
 addButtons(); //inital run to add the starting buttons
