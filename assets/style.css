@@ -131,8 +131,12 @@ body {
         margin: 0;
     }
 
+    .saveBox {
+        width: 360px;
+    }
+
     .box {
-        width: 384px;
+        width: 360px;
     }
     
 }
